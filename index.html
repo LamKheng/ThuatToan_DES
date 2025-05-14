@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 DES File Encrypt/Decrypt</title>
+    <style>
+        
+        :root {
+            --bg-gradient: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+            --frame-bg: #ffffff;
+            --primary: #2e7d32;
+            --secondary: #0288d1;
+            --input-bg: #f1f8e9;
+            --input-border: #c5e1a5;
+            --hover-dark: #1b5e20;
+            --error: #d32f2f;
+            --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font);
+            background: var(--bg-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: var(--frame-bg);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="file"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--input-border);
+            background-color: var(--input-bg);
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="file"]:hover,
+        input[type="password"]:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .encrypt-btn {
+            background-color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        .encrypt-btn:hover {
+            background-color: #01579b;
+            transform: scale(1.02);
+        }
+
+        .decrypt-btn {
+            background-color: var(--primary);
+        }
+
+        .decrypt-btn:hover {
+            background-color: var(--hover-dark);
+            transform: scale(1.02);
+        }
+
+        .alert {
+            padding: 12px;
+            border-left: 5px solid var(--error);
+            background-color: #ffebee;
+            color: var(--error);
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 480px) {
+            .button-group {
+                flex-direction: column;
+            }
+
+            .encrypt-btn,
+            .decrypt-btn {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DES File Encrypt / Decrypt</h1>
+
+        <!-- Flash messages placeholder -->
+        <!--
+        <div class="alert">Error or success message here.</div>
+        -->
+
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file"> Chọn tệp:</label>
+            <input type="file" id="file" name="file" required>
+        
+            <label for="key"> Nhập khóa (8 ký tự):</label>
+            <input type="password" id="key" name="key" minlength="8" maxlength="8" required>
+        
+            <div class="button-group">
+                <button type="submit" name="action" value="encrypt" class="encrypt-btn"> Mã hóa</button>
+                <button type="submit" name="action" value="decrypt" class="decrypt-btn"> Giải mã</button>
+            </div>
+        </form>        
+    </div>
+</body>
+</html>
